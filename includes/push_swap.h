@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:04:18 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/08/27 15:10:33 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:23:32 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		is_over_limits(char *argv[]);
 int		is_not_digit(char *argv[]);
 //create stack functions
 void	create_stack(t_data *db, char *argv[]);
-void	fill_stack(int *sa, char *argv[]);
+void	fill_stack(t_data *db, char *argv[]);
 int		get_stack_lenght(char *argv[]);
 
 #endif
