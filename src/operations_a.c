@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	push_a(d_data *db)
+void	push_a(t_data *db)
 {
 	if (db->top_b < 0)
 		return ;
@@ -34,9 +34,9 @@ void	rotate_r_a(t_data *db)
 	while (i < db->top_a)
 	{
 		db->sa[i] = db->sa[i + 1];
-		i--;
+		i++;
 	}
-	db->sa[i] = temp;
+	db->sa[db->top_a] = temp;
 	write(1, "rra\n", 4);
 }
 
@@ -48,7 +48,7 @@ void	rotate_a(t_data *db)
 	if (db->top_a <= 0)
 		return ;
 	i = db->top_a;
-	temp = sa[db->top_a];
+	temp = db->sa[db->top_a];
 	while (i > 0)
 	{
 		db->sa[i] = db->sa[i - 1];

@@ -11,20 +11,21 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
-	t_data	*db;
+	t_data	db;
 
 	if (argc == 1)
 		return (0);
 	if (error_check(argv))
 	{
-		ft_putstr_fd("Error\n", 2);
+		write(2, "Error\n", 6);
 		return (0);
 	}
-	initialize_values(db, argv);
-	if (are_not_sorted(db.sa))
-		sorting_stack(db);
+	initialize_values(&db, argv);
+	if (are_not_sorted(&db))
+		sorting_stack(&db);
 	return (0);
 }

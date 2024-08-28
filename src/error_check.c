@@ -10,17 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/push_swap.h"
+
+int	are_not_sorted(t_data *db)
+{
+	int	i;
+	
+	i = 0;
+	while (i < db->top_a)
+	{
+		if (db->sa[i] > db->sa[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	is_not_digit(char *argv[])
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
+	i = 1;
 	while (argv[i])
 	{
+		j = 0;
+		//handle negative numbers
 		while (argv[i][j] != '\0')
 		{
 			if (argv[i][j] < '0' || argv[i][j] > '9')
@@ -74,5 +90,6 @@ int	error_check(char *argv[])
 		return (1);
 	if (is_double_number(argv))
 		return (1);
+	
 	return (0);
 }		
