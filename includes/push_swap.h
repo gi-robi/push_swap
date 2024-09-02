@@ -49,7 +49,9 @@ void	sorting_stack(t_data *db);
 void    sort_3(t_data *db);
 void    sort_4(t_data *db);
 void    sort_5(t_data *db);
+void    sort_100(t_data *db);
 //utilities
 int	find_smallest(int *stack, int s_top);
 long long	ft_atoi_ps(const char *str);
+
 #endif
