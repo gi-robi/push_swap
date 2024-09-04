@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:11:40 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/09/04 11:19:27 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:28:24 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_not_digit(char *argv[])
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		j = 0;
@@ -52,7 +52,7 @@ int	is_over_limits(char *argv[])
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		if (ft_atoi_ps(argv[i]) > INT_MAX || ft_atoi_ps(argv[i]) < INT_MIN)
@@ -67,7 +67,7 @@ int	is_double_number(char *argv[])
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (argv[i + 1])
 	{
 		j = i + 1;
