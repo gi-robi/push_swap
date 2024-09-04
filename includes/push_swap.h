@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:04:18 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/09/04 12:05:27 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:35:24 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ int	find_smallest(int *stack, int s_top);
 long long	ft_atoi_ps(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char    *ft_strdup(const char *s);
+size_t	ft_strlen(const char *string);
 #endif
