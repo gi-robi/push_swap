@@ -15,7 +15,7 @@
 void	sorting_stack(t_data *db)
 {
 	if (db->lenght == 2)
-		swap_a(db);
+		swap_a(db, 1);
 	if (db->lenght == 3)
 		sort_3(db);
 	if (db->lenght == 4)

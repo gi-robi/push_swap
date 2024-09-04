@@ -22,9 +22,9 @@ void	sort_5(t_data *db)
 	while (db->sa[4] != min_number)
 	{
 		if (min_index > 1)
-			rotate_a(db);
+			rotate_a(db, 1);
 		else
-			rotate_r_a(db);
+			rotate_r_a(db, 1);
 	}
 	push_b(db);
 	sort_4(db);
@@ -39,9 +39,9 @@ void	sort_4(t_data *db)
 	min_index = find_smallest(db->sa, db->top_a);
 	min_number = db->sa[min_index];
 	if (min_index == 2)
-		swap_a(db);
+		swap_a(db, 1);
 	while (db->sa[3] != min_number)
-		rotate_r_a(db);
+		rotate_r_a(db, 1);
 	push_b(db);
 	sort_3(db);
 	push_a(db);
@@ -54,18 +54,18 @@ void	sort_3(t_data *db)
 	min = find_smallest(db->sa, db->top_a);
 	if (min == 2 && db->sa[1] > db->sa[0])
 	{
-		rotate_r_a(db);
-		swap_a(db);
+		rotate_r_a(db, 1);
+		swap_a(db, 1);
 	}
 	else if (min == 1 && db->sa[2] > db->sa[0])
-		rotate_a(db);
+		rotate_a(db, 1);
 	else if (min == 0 && db->sa[2] > db->sa[1])
 	{
-		rotate_a(db);
-		swap_a(db);
+		rotate_a(db, 1);
+		swap_a(db, 1);
 	}
 	else if (min == 0 && db->sa[1] > db->sa[2])
-		rotate_r_a(db);
+		rotate_r_a(db, 1);
 	else if (min == 1 && db->sa[0] > db->sa[2])
-		swap_a(db);
+		swap_a(db, 1);
 }

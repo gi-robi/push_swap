@@ -22,7 +22,7 @@ void	push_a(t_data *db)
 	write(1, "pa\n", 3);
 }
 
-void	rotate_r_a(t_data *db)
+void	rotate_r_a(t_data *db, int print)
 {
 	int	temp;
 	int	i;
@@ -37,10 +37,11 @@ void	rotate_r_a(t_data *db)
 		i++;
 	}
 	db->sa[db->top_a] = temp;
-	write(1, "rra\n", 4);
+	if (print)
+		write(1, "rra\n", 4);
 }
 
-void	rotate_a(t_data *db)
+void	rotate_a(t_data *db, int print)
 {
 	int	temp;
 	int	i;
@@ -55,10 +56,11 @@ void	rotate_a(t_data *db)
 		i--;
 	}
 	db->sa[i] = temp;
-	write (1, "ra\n", 3);
+	if (print)
+		write (1, "ra\n", 3);
 }
 
-void	swap_a(t_data *db)
+void	swap_a(t_data *db, int print)
 {
 	int	temp;
 
@@ -67,5 +69,6 @@ void	swap_a(t_data *db)
 	temp = db->sa[db->top_a];
 	db->sa[db->top_a] = db->sa[db->top_a - 1];
 	db->sa[db->top_a - 1] = temp;
-	write(1, "sa\n", 3);
+	if (print)
+		write(1, "sa\n", 3);
 }

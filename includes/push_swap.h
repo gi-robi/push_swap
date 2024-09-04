@@ -38,18 +38,25 @@ void	initialize_values(t_data *db, char *argv[]);
 void	fill_stack(t_data *db, char *argv[]);
 int		get_stack_lenght(char *argv[]);
 //operations of stack A
-void    swap_a(t_data *db);
-void    rotate_a(t_data *db);
-void    rotate_r_a(t_data *db);
+void    swap_a(t_data *db, int print);
+void    rotate_a(t_data *db, int print);
+void    rotate_r_a(t_data *db, int print);
 void    push_a(t_data *db);
 //operations of stack B
 void    push_b(t_data *db);
+void    rotate_b(t_data *db, int print);
+void    rotate_r_b(t_data *db, int print);
+void    swap_b(t_data *db, int print);
+//operations both
+void	rotate_both(t_data *db);
+void	swap_both(t_data *db);
+void	rotate_r_both(t_data *db);
 //sorting stack
 void	sorting_stack(t_data *db);
 void    sort_3(t_data *db);
 void    sort_4(t_data *db);
 void    sort_5(t_data *db);
-void    sort_100(t_data *db);
+
 //utilities
 int	find_smallest(int *stack, int s_top);
 long long	ft_atoi_ps(const char *str);
@@ -57,4 +64,5 @@ char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char    *ft_strdup(const char *s);
 size_t	ft_strlen(const char *string);
+
 #endif
