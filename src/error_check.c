@@ -37,6 +37,8 @@ int	is_not_digit(char *argv[])
 	{
 		j = 0;
 		//handle negative numbers
+		if (argv[i][j] == '-')
+			j++;
 		while (argv[i][j] != '\0')
 		{
 			if (argv[i][j] < '0' || argv[i][j] > '9')
