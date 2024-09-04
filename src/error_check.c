@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:11:40 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/08/27 15:11:34 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:19:27 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	are_not_sorted(t_data *db)
 	i = 0;
 	while (i < db->top_a)
 	{
-		if (db->sa[i] > db->sa[i + 1])
+		if (db->sa[i] < db->sa[i + 1])
 			return (1);
 		i++;
 	}
@@ -52,7 +52,7 @@ int	is_over_limits(char *argv[])
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		if (ft_atoi_ps(argv[i]) > INT_MAX || ft_atoi_ps(argv[i]) < INT_MIN)
@@ -67,7 +67,7 @@ int	is_double_number(char *argv[])
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (argv[i + 1])
 	{
 		j = i + 1;

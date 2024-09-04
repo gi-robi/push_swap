@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:14:36 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/08/27 15:23:05 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:55:08 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	fill_stack(t_data *db, char *argv[])
 	int	i;
 	int	j;
 
-	i = 1;
+	i = db->lenght;
 	j = 0;
-	while (argv[i])
+	while (i > 0)
 	{
 		db->sa[j] = (int)ft_atoi_ps(argv[i]);
-		i++;
+		i--;
 		j++;
 	}
 }
@@ -48,7 +48,7 @@ void	initialize_values(t_data *db, char *argv[])
 	db->sa = malloc(db->lenght * sizeof(int));
 	db->sb = malloc(db->lenght * sizeof(int));
 	//add some error check;
-	fill_stack(db, argv);
 	db->top_a = db->lenght - 1;
 	db->top_b = -1;
+	fill_stack(db, argv);
 }

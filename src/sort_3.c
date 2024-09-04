@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:38:08 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/08/27 14:56:37 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:55:35 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,68 +14,58 @@
 
 void	sort_5(t_data *db)
 {
-	int	smallest;
-	int	second_smallest;
+	int	min_index;
+	int	min_number;
 
-	smallest = find_smallest(db->sa, db->top_a);
-	while (smallest < 4)
+	min_index = find_smallest(db->sa, db->top_a);
+	min_number = db->sa[min_index];
+	while (db->sa[4] != min_number)
 	{
-		rotate_a(db);
-		smallest++;
+		if (min_index > 1)
+			rotate_a(db);
+		else
+			rotate_r_a(db);
 	}
 	push_b(db);
-	second_smallest = find_smallest(db->sa, db->top_a);
-	while (second_smallest < 3)
-	{
-		rotate_a(db);
-		second_smallest++;
-	}
-	push_b(db);
-	sort_3(db);
-	push_a(db);
+	sort_4(db);
 	push_a(db);
 }
 
 void	sort_4(t_data *db)
 {
-	if (db->sa[1] < db->sa[0] && db->sa[1] < db->sa[2] && db->sa[1] < db->sa[3])
+	int	min_index;
+	int	min_number;
+
+	min_index = find_smallest(db->sa, db->top_a);
+	min_number = db->sa[min_index];
+	if (min_index == 2)
 		swap_a(db);
-	if (!are_not_sorted(db))
-		return ;
-	if (db->sa[2] < db->sa[0] && db->sa[2] < db->sa[1] && db->sa[2] < db->sa[3])
-	{
-		rotate_a(db);
-			if (!are_not_sorted(db))
-				return ;
-		rotate_a(db);
-		if (!are_not_sorted(db))
-			return ;
-	}
-	if (db->sa[3] < db->sa[0] && db->sa[3] < db->sa[1] && db->sa[3] < db->sa[2])
+	while (db->sa[3] != min_number)
 		rotate_r_a(db);
-	if (!are_not_sorted(db))
-		return ; 
 	push_b(db);
 	sort_3(db);
-	push_b(db);
+	push_a(db);
 }
 
 void	sort_3(t_data *db)
 {
-	if (db->sa[1] > db->sa[2] && db->sa[2] > db->sa[0])
+	int	min;
+	
+	min = find_smallest(db->sa, db->top_a);
+	if (min == 2 && db->sa[1] > db->sa[0])
 	{
+		rotate_r_a(db);
 		swap_a(db);
-		rotate_a(db);
 	}
-	else if ((db->sa[0] > db->sa[1] && db->sa[0] > db->sa[2]) && db->sa[2] > db->sa[1])
+	else if (min == 1 && db->sa[2] > db->sa[0])
 		rotate_a(db);
-	else if ((db->sa[0] > db->sa[1] && db->sa[0] > db->sa[2]) && db->sa[2] < db->sa[1])
+	else if (min == 0 && db->sa[2] > db->sa[1])
 	{
+		rotate_a(db);
 		swap_a(db);
-		rotate_r_a(db);
 	}
-	else if (db->sa[1] > db->sa[2] && db->sa[2] < db->sa[0])
+	else if (min == 0 && db->sa[1] > db->sa[2])
 		rotate_r_a(db);
-	else if ((db->sa[2] > db->sa[0] && db->sa[2] > db->sa[1]) && db->sa[0] > db->sa[1])
+	else if (min == 1 && db->sa[0] > db->sa[2])
 		swap_a(db);
 }
