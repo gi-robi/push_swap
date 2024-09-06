@@ -48,7 +48,8 @@ void	initialize_values(t_data *db, char *argv[])
 	printf("lenght: %d\n", db->lenght);
 	db->sa = malloc(db->lenght * sizeof(int));
 	db->sb = malloc(db->lenght * sizeof(int));
-	//add some error check;
+	if (db->sa == NULL || db->sb == NULL)
+		return ;
 	db->top_a = db->lenght - 1;
 	db->top_b = -1;
 	fill_stack(db, argv);

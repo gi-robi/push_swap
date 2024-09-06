@@ -30,17 +30,19 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	initialize_values(&db, tab);
- 	int i = db.top_a;
+	if (db->sa == NULL || db->sb == NULL)
+		return (0);
+/* 	int i = db.top_a;
 	printf("Before sorting\n");
 	while (i >= 0)
 	{
 		printf("position %d: %d\n", i, db.sa[i]);
 		i--;
 	}
-
-	if (are_not_sorted(&db))
+*/
+	if (!(is_sorted(&db)))
 		sorting_stack(&db);
-	printf("top a: %d\n", db.top_a);
+/*	printf("top a: %d\n", db.top_a);
 	i = db.top_a;
 	printf("After sorting\n");
 	while (i >= 0)
@@ -48,6 +50,6 @@ int	main(int argc, char *argv[])
 		printf("position %d: %d\n", i, db.sa[i]);
 		i--;
 	}
-
+*/
 	return (0);
 }
