@@ -1,3 +1,5 @@
+#include "../includes/checker.h"
+
 int	is_sorted(t_data *db)
 {
 	int	i;
@@ -21,7 +23,6 @@ int	is_not_digit(char *argv[])
 	while (argv[i])
 	{
 		j = 0;
-		//handle negative numbers
 		if (argv[i][j] == '-')
 			j++;
 		while (argv[i][j] != '\0')
@@ -68,6 +69,8 @@ int	is_double_number(char *argv[])
 	}
 	return (0);
 }
+
+
 
 int	error_check(char *argv[])
 {

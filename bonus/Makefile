@@ -3,7 +3,7 @@
 NAME = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = src/checker.c src/error_check.c src/initialize_values.c src_ft_split.c src/utilities.c src/operations_a.c src/operations_b.c src/operations_both.c gnl/get_next_line.c gnl/get_next_line_utilities.c
+SRCS = src/checker.c src/error_check.c src/initialize_values.c src/ft_split.c src/utilities.c src/operations_a.c src/operations_b.c src/operations_both.c src/gnl/get_next_line.c src/gnl/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 HEADER = includes/checker.h
 

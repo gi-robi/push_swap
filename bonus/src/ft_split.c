@@ -1,3 +1,5 @@
+#include "../includes/checker.h"
+
 static int	string_count(char const *s, char c)
 {
 	int	i;
