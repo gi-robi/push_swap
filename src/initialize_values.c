@@ -45,11 +45,14 @@ void	fill_stack(t_data *db, char *argv[])
 void	initialize_values(t_data *db, char *argv[])
 {
 	db->lenght = get_stack_lenght(argv);
-	printf("lenght: %d\n", db->lenght);
+	db->sa = NULL;
+	db->sb = NULL;
+	db->target = NULL;
+	db->price = NULL;
 	db->sa = malloc(db->lenght * sizeof(int));
 	db->sb = malloc(db->lenght * sizeof(int));
 	if (db->sa == NULL || db->sb == NULL)
-		return ;
+		free_all_and_exit(db);
 	db->top_a = db->lenght - 1;
 	db->top_b = -1;
 	fill_stack(db, argv);

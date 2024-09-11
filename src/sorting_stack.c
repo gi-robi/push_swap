@@ -22,4 +22,6 @@ void	sorting_stack(t_data *db)
 		sort_4(db);
 	if (db->lenght == 5)
 		sort_5(db);
+	else
+		sort_all(db);
 }

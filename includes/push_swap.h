@@ -25,6 +25,8 @@ typedef struct s_data
 	int	lenght;
 	int	top_a;
 	int	top_b;
+	int	*target;
+	int	*price;
 }	t_data;
 
 //error checking functions
@@ -32,7 +34,7 @@ int		error_check(char *argv[]);
 int		is_double_number(char *argv[]);
 int		is_over_limits(char *argv[]);
 int		is_not_digit(char *argv[]);
-int	are_not_sorted(t_data *db);
+int	is_sorted(t_data *db);
 //create stack functions
 void	initialize_values(t_data *db, char *argv[]);
 void	fill_stack(t_data *db, char *argv[]);
@@ -57,6 +59,11 @@ void    sort_3(t_data *db);
 void    sort_4(t_data *db);
 void    sort_5(t_data *db);
 
+void    sort_turk(t_data db);
+void    set_values(t_data *db);
+void    allocate_target_and_price(t_data *db);
+void    set_target(t_data *db);
+void    set_price(t_data *db);
 //utilities
 int	find_smallest(int *stack, int s_top);
 long long	ft_atoi_ps(const char *str);
