@@ -23,5 +23,5 @@ void	sorting_stack(t_data *db)
 	if (db->lenght == 5)
 		sort_5(db);
 	else
-		sort_all(db);
+		sort_turk(db);
 }

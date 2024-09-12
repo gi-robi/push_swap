@@ -59,11 +59,16 @@ void    sort_3(t_data *db);
 void    sort_4(t_data *db);
 void    sort_5(t_data *db);
 
-void    sort_turk(t_data db);
+void    sort_turk(t_data *db);
 void    set_values(t_data *db);
 void    allocate_target_and_price(t_data *db);
 void    set_target(t_data *db);
 void    set_price(t_data *db);
+int     find_cheap_index(t_data *db);
+void    make_move(t_data *db);
+void    continue_rotation(t_data *db, int top_n, int cheap_index, char stack);
+void    final_adjustments(t_data *db);
+
 //utilities
 int	find_smallest(int *stack, int s_top);
 long long	ft_atoi_ps(const char *str);
@@ -71,5 +76,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char    *ft_strdup(const char *s);
 size_t	ft_strlen(const char *string);
+
+void	free_all_and_exit(t_data *db, int error);
 
 #endif

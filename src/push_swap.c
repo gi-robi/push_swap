@@ -32,7 +32,7 @@ int	main(int argc, char *argv[])
 	initialize_values(&db, tab);
 	if (db.sa == NULL || db.sb == NULL)
 		return (0);
- ////	int i = db.top_a;
+//	int i = db.top_a;
 //	printf("Before sorting\n");
 //	while (i >= 0)
 //	{
@@ -49,5 +49,6 @@ int	main(int argc, char *argv[])
 //		printf("position %d: %d\n", i, db.sa[i]);
 //		i--;
 //	}
+	free_all_and_exit(&db, 0);
 	return (0);
 }

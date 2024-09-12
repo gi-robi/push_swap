@@ -52,7 +52,7 @@ void	initialize_values(t_data *db, char *argv[])
 	db->sa = malloc(db->lenght * sizeof(int));
 	db->sb = malloc(db->lenght * sizeof(int));
 	if (db->sa == NULL || db->sb == NULL)
-		free_all_and_exit(db);
+		free_all_and_exit(db, 1);
 	db->top_a = db->lenght - 1;
 	db->top_b = -1;
 	fill_stack(db, argv);
