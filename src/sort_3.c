@@ -11,61 +11,29 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
-void	sort_5(t_data *db)
+void	sort_3(t_node **head, t_data *db)
 {
-	int	min_index;
-	int	min_number;
-
-	min_index = find_smallest(db->sa, db->top_a);
-	min_number = db->sa[min_index];
-	while (db->sa[4] != min_number)
-	{
-		if (min_index > 1)
-			rotate_a(db, 1);
-		else
-			rotate_r_a(db, 1);
-	}
-	push_b(db);
-	sort_4(db);
-	push_a(db);
-}
-
-void	sort_4(t_data *db)
-{
-	int	min_index;
-	int	min_number;
-
-	min_index = find_smallest(db->sa, db->top_a);
-	min_number = db->sa[min_index];
-	if (min_index == 2)
-		swap_a(db, 1);
-	while (db->sa[3] != min_number)
-		rotate_r_a(db, 1);
-	push_b(db);
-	sort_3(db);
-	push_a(db);
-}
-
-void	sort_3(t_data *db)
-{
-	int	min;
+	int	max_num;
+	t_node	*max_ptr;
+	t_node	*current_node;
 	
-	min = find_smallest(db->sa, db->top_a);
-	if (min == 2 && db->sa[1] > db->sa[0])
+	current_node = *head;
+	max_num = INT_MIN;
+	while (current_node)   //consider putting this in a function find_max
 	{
-		rotate_r_a(db, 1);
-		swap_a(db, 1);
+		if (current_node->value > max_num)
+		{
+			max_num = current_node->value;
+			max_ptr = current_node;
+		}
+		current_node = current_node->next;
 	}
-	else if (min == 1 && db->sa[2] > db->sa[0])
-		rotate_a(db, 1);
-	else if (min == 0 && db->sa[2] > db->sa[1])
-	{
-		rotate_a(db, 1);
-		swap_a(db, 1);
-	}
-	else if (min == 0 && db->sa[1] > db->sa[2])
-		rotate_r_a(db, 1);
-	else if (min == 1 && db->sa[0] > db->sa[2])
-		swap_a(db, 1);
+	if (max_ptr == *head)
+		rotate_a(&db->head_a, 1);
+	else if (max_ptr == (*head)->next)
+		rotate_r_a(&db->head_a, 1);
+	if ((*head)->value > (*head)->next->value)
+		swap_a(&db->head_a, 1);
 }

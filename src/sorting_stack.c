@@ -14,14 +14,13 @@
 
 void	sorting_stack(t_data *db)
 {
-	if (db->lenght == 2)
-		swap_a(db, 1);
-	if (db->lenght == 3)
-		sort_3(db);
-	if (db->lenght == 4)
-		sort_4(db);
-	if (db->lenght == 5)
-		sort_5(db);
+	int	len;
+	
+	len = len_of_list(db->head_a);
+	if (len == 2)
+		swap_a(&db->head_a, 1);
+	if (len == 3)
+		sort_3(&db->head_a, db);
 	else
-		sort_turk(db);
+		sort_all(db);
 }

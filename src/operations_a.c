@@ -11,64 +11,83 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 void	push_a(t_data *db)
 {
-	if (db->top_b < 0)
+	t_node	*new_node;
+
+	if (db->head_b == NULL)
 		return ;
-	db->top_a++;
-	db->sa[db->top_a] = db->sb[db->top_b];
-	db->top_b--;
+	new_node = db->head_b;
+	db->head_b = db->head_b->next;
+	if (db->head_b != NULL)
+		db->head_b->prev = NULL;
+	new_node->prev = NULL;
+	if (db->head_a == NULL)
+	{
+		db->head_a = new_node;
+		new_node->next = NULL;
+	}
+	else
+	{
+		new_node->next = db->head_a;
+		new_node->next->prev = new_node;
+		db->head_a = new_node;
+	}
 	write(1, "pa\n", 3);
 }
 
-void	rotate_r_a(t_data *db, int print)
+void	rotate_r_a(t_node **head, int print)
 {
-	int	temp;
-	int	i;
+	t_node	*new_node;
+	int	len;
 
-	if (db->top_a <= 0)
+	len = len_of_list(*head);
+	if (head == NULL || *head == NULL || len <= 1)
 		return ;
-	temp = db->sa[0];
-	i = 0;
-	while (i < db->top_a)
-	{
-		db->sa[i] = db->sa[i + 1];
-		i++;
-	}
-	db->sa[db->top_a] = temp;
+	new_node = get_last_node(*head);
+	new_node->prev->next = NULL;
+	new_node->next = *head;
+	new_node->prev = NULL;
+	*head = new_node;
+	new_node->next->prev = new_node;
 	if (print)
 		write(1, "rra\n", 4);
 }
 
-void	rotate_a(t_data *db, int print)
+void	rotate_a(t_node **head, int print)
 {
-	int	temp;
-	int	i;
-
-	if (db->top_a <= 0)
+	t_node	*new_node;
+	int	len;
+	
+	len = len_of_list(*head);
+	if (head == NULL || *head == NULL || len <= 1)
 		return ;
-	i = db->top_a;
-	temp = db->sa[db->top_a];
-	while (i > 0)
-	{
-		db->sa[i] = db->sa[i - 1];
-		i--;
-	}
-	db->sa[i] = temp;
+	new_node = get_last_node(*head);
+	new_node->next = *head;
+	*head = (*head)->next;
+	(*head)->prev = NULL;
+	new_node->next->prev = new_node;
+	new_node->next->next = NULL;
 	if (print)
-		write (1, "ra\n", 3);
+		write(1, "ra\n", 3);
 }
 
-void	swap_a(t_data *db, int print)
+void	swap_a(t_node **head, int print)
 {
-	int	temp;
+	int	len;
 
-	if (db->top_a < 1)
+	len = len_of_list(*head);
+	if (head == NULL || *head == NULL || len <= 1)
 		return ;
-	temp = db->sa[db->top_a];
-	db->sa[db->top_a] = db->sa[db->top_a - 1];
-	db->sa[db->top_a - 1] = temp;
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 	if (print)
 		write(1, "sa\n", 3);
 }

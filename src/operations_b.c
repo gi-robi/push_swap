@@ -14,62 +14,79 @@
 
 void	push_b(t_data *db)
 {
-	if (db->top_a < 0)
+	t_node	*new_node;
+
+	if (db->head_a == NULL)
 		return ;
-	db->top_b++;
-	db->sb[db->top_b] = db->sa[db->top_a];
-	db->top_a--;
+	new_node = db->head_a;
+	db->head_a = db->head_a->next;
+	if (db->head_a != NULL)
+		db->head_a->prev = NULL;
+	new_node->prev = NULL;
+	if (db->head_b == NULL)
+	{
+		db->head_b = new_node;
+		new_node->next = NULL;
+	}
+	else
+	{
+		new_node->next = db->head_b;
+		new_node->next->prev = new_node;
+		db->head_b = new_node;
+	}
 	write(1, "pb\n", 3);
 }
 
-void    rotate_b(t_data *db, int print)
+void    rotate_b(t_node **head, int print)
 {
-	int	temp;
-	int	i;
-
-	if (db->top_b <= 0)
+	t_node	*new_node;
+	int	len;
+	
+	len = len_of_list(*head);
+	if (head == NULL || *head == NULL || len <= 1)
 		return ;
-	i = db->top_b;
-	temp = db->sb[db->top_b];
-	while (i > 0)
-	{
-		db->sb[i] = db->sb[i - 1];
-		i--;
-	}
-	db->sb[i] = temp;
+	new_node = get_last_node(*head);
+	new_node->next = *head;
+	*head = (*head)->next;
+	(*head)->prev = NULL;
+	new_node->next->prev = new_node;
+	new_node->next->next = NULL;
 	if (print)
 		write (1, "rb\n", 3);
 }
 
-void    rotate_r_b(t_data *db, int print)
+void    rotate_r_b(t_node **head, int print)
 {
-	int	temp;
-	int	i;
+	t_node	*new_node;
+	int	len;
 
-	if (db->top_b <= 0)
+	len = len_of_list(*head);
+	if (head == NULL || *head == NULL || len <= 1)
 		return ;
-	temp = db->sb[0];
-	i = 0;
-	while (i < db->top_b)
-	{
-		db->sb[i] = db->sb[i + 1];
-		i++;
-	}
-	db->sb[db->top_b] = temp;
+	new_node = get_last_node(*head);
+	new_node->prev->next = NULL;
+	new_node->next = *head;
+	new_node->prev = NULL;
+	*head = new_node;
+	new_node->next->prev = new_node;
 	if (print)
 		write(1, "rrb\n", 4);
 }
 
-void    swap_b(t_data *db, int print)
+void    swap_b(t_node **head, int print)
 {
-	int	temp;
+	int	len;
 
-	if (db->top_b < 1)
+	len = len_of_list(*head);
+	if (head == NULL || *head == NULL || len <= 1)
 		return ;
-	temp = db->sb[db->top_b];
-	db->sb[db->top_b] = db->sb[db->top_b - 1];
-	db->sb[db->top_b - 1] = temp;
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 	if (print)
 		write(1, "sb\n", 3);
 }
-

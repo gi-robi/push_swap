@@ -11,44 +11,40 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
+
+void	create_tab_two(char **argv, t_data *db)
+{
+	if (!argv[1][0] || argv[1][0] == 32 || (argv[1][0] >= 9 && argv[1][0] <= 13))
+	{
+		write(2, "Incorrect arguments.\n", 21);
+		exit (1);
+	}
+	db->tab = ft_split(argv[1], ' ');
+	if (db->tab == NULL)
+	{
+		write(2, "Tab allocation failed\n", 22);
+		exit (1);
+	}
+	db->is_tab_all = 1;
+}
 
 int	main(int argc, char *argv[])
 {
 	t_data	db;
-	char	**tab;
 
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
-		tab = ft_split(argv[1], ' ');
+		create_tab_two(argv, &db);
 	else
-		tab = argv + 1;
-	if (error_check(tab))
 	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
-	initialize_values(&db, tab);
-	if (db.sa == NULL || db.sb == NULL)
-		return (0);
-//	int i = db.top_a;
-//	printf("Before sorting\n");
-//	while (i >= 0)
-//	{
-//		printf("position %d: %d\n", i, db.sa[i]);
-//		i--;
-//	}
-	if (!(is_sorted(&db)))
+		db.tab = &argv[1];
+		db.is_tab_all = 0;
+	}	
+	error_check(&db, db.tab);
+	initialize_values(&db);
+	if (!(is_sorted(db.head_a)))
 		sorting_stack(&db);
-	//printf("top a: %d\n", db.top_a);
-//	i = db.top_a;
-//	printf("After sorting\n");
-//	while (i >= 0)
-//	{
-//		printf("position %d: %d\n", i, db.sa[i]);
-//		i--;
-//	}
-	free_all_and_exit(&db, 0);
+	free_all(&db);	
 	return (0);
 }
