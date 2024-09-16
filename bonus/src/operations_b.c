@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations_b.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/16 15:45:53 by rgiambon          #+#    #+#             */
+/*   Updated: 2024/09/16 15:47:45 by rgiambon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/checker.h"
 
 void	push_b(t_data *db, int print)
@@ -11,7 +23,7 @@ void	push_b(t_data *db, int print)
 		write(1, "pb\n", 3);
 }
 
-void    rotate_b(t_data *db, int print)
+void	rotate_b(t_data *db, int print)
 {
 	int	temp;
 	int	i;
@@ -30,7 +42,7 @@ void    rotate_b(t_data *db, int print)
 		write (1, "rb\n", 3);
 }
 
-void    rotate_r_b(t_data *db, int print)
+void	rotate_r_b(t_data *db, int print)
 {
 	int	temp;
 	int	i;
@@ -49,7 +61,7 @@ void    rotate_r_b(t_data *db, int print)
 		write(1, "rrb\n", 4);
 }
 
-void    swap_b(t_data *db, int print)
+void	swap_b(t_data *db, int print)
 {
 	int	temp;
 

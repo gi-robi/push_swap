@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_check.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/16 15:43:58 by rgiambon          #+#    #+#             */
+/*   Updated: 2024/09/16 15:44:57 by rgiambon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/checker.h"
 
 int	is_sorted(t_data *db)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < db->top_a)
 	{
@@ -70,8 +82,6 @@ int	is_double_number(char *argv[])
 	return (0);
 }
 
-
-
 int	error_check(char *argv[])
 {
 	if (is_not_digit(argv))
@@ -80,6 +90,5 @@ int	error_check(char *argv[])
 		return (1);
 	if (is_double_number(argv))
 		return (1);
-	
 	return (0);
 }

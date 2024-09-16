@@ -1,19 +1,16 @@
-#include "../includes/checker.h"
-# include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/16 15:43:05 by rgiambon          #+#    #+#             */
+/*   Updated: 2024/09/16 16:54:45 by rgiambon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*void	free_all(char **moves)
-{
-	int	i;
-	
-	i = 0;
-	while (moves[i])
-	{
-		free(moves[i]);
-		i++;
-	}
-	free(moves);
-	moves = NULL;
-}*/
+#include "../includes/checker.h"
 
 void	sort_loop(t_data *db)
 {
@@ -62,23 +59,30 @@ void	sort_tab(char *move, t_data *db)
 		db->spelling_error = 1;
 }
 
-void	check_if_sorted(t_data *db)
+void	check_if_sorted(t_data *db, int is_tab_all, char **tab)
 {
 	if (is_sorted(db) && db->top_b == -1)
 		write (1, "OK\n", 3);
 	else
 		write (1, "KO\n", 3);
+	if (is_tab_all)
+		free_tab(tab);
 }
 
 int	main(int argc, char **argv)
 {
 	t_data	db;
 	char	**tab;
+	int		is_tab_all;
 
+	is_tab_all = 0;
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
+	{
 		tab = ft_split(argv[1], ' ');
+		is_tab_all = 1;
+	}
 	else
 		tab = argv + 1;
 	if (error_check(tab))
@@ -90,7 +94,7 @@ int	main(int argc, char **argv)
 	if (db.sa == NULL || db.sb == NULL)
 		return (0);
 	sort_loop(&db);
-	check_if_sorted(&db);
+	check_if_sorted(&db, is_tab_all, tab);
+	free_stacks(&db);
 	return (0);
 }
-	

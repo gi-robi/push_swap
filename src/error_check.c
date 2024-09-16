@@ -6,11 +6,10 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:11:40 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/09/04 12:28:24 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:55:48 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/push_swap.h"
 
 int	is_sorted(t_node *head)
@@ -22,7 +21,7 @@ int	is_sorted(t_node *head)
 	current_node = head;
 	while (current_node->next)
 	{
-		if(current_node->value > current_node->next->value)
+		if (current_node->value > current_node->next->value)
 			return (0);
 		current_node = current_node->next;
 	}
@@ -88,7 +87,7 @@ int	is_double_number(char **tab)
 int	error_check(t_data *db, char **tab)
 {
 	int	error;
-	
+
 	error = 0;
 	if (is_not_digit(tab))
 		error = 1;

@@ -6,33 +6,16 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:14:36 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/09/04 12:32:36 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:17:20 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	len_of_list(t_node *head)
-{
-	int	len;
-	t_node	*current_node;
-
-	if (!head)
-		return (0);
-	len = 0;
-	current_node = head;
-	while (current_node != NULL)
-	{
-		len++;
-		current_node = current_node->next;
-	}
-	return (len);
-}
-
 void	put_first_node(t_node **head, t_node **end, int num, t_data *db)
 {
 	t_node	*new_node;
-	
+
 	new_node = malloc(sizeof(t_node));
 	if (new_node == NULL)
 	{
@@ -73,11 +56,11 @@ void	sort_array(int *array, int len)
 
 void	store_middle(t_data *db)
 {
-	int	*array;
-	int	i;
+	int		*array;
+	int		i;
 	t_node	*current_node;
-	int	len;
-	
+	int		len;
+
 	len = len_of_list(db->head_a);
 	array = malloc(len * sizeof(int));
 	if (array == NULL)
@@ -131,7 +114,7 @@ void	initialize_values(t_data *db)
 	db->head_a = NULL;
 	db->head_b = NULL;
 	db->end_a = NULL;
-	while(db->tab[i])
+	while (db->tab[i])
 	{
 		num = (int)ft_atoi_ps(db->tab[i]);
 		put_node_end(&db->head_a, &db->end_a, num, db);
@@ -139,5 +122,4 @@ void	initialize_values(t_data *db)
 	}
 	free_tab(db);
 	store_middle(db);
-
 }

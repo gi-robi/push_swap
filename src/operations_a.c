@@ -6,12 +6,11 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:14:56 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/08/27 14:59:05 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:01:21 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	push_a(t_data *db)
 {
@@ -41,7 +40,7 @@ void	push_a(t_data *db)
 void	rotate_r_a(t_node **head, int print)
 {
 	t_node	*new_node;
-	int	len;
+	int		len;
 
 	len = len_of_list(*head);
 	if (head == NULL || *head == NULL || len <= 1)
@@ -59,8 +58,8 @@ void	rotate_r_a(t_node **head, int print)
 void	rotate_a(t_node **head, int print)
 {
 	t_node	*new_node;
-	int	len;
-	
+	int		len;
+
 	len = len_of_list(*head);
 	if (head == NULL || *head == NULL || len <= 1)
 		return ;

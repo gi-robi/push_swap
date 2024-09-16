@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:01:15 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/08/27 15:01:52 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:02:36 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	push_b(t_data *db)
 	write(1, "pb\n", 3);
 }
 
-void    rotate_b(t_node **head, int print)
+void	rotate_b(t_node **head, int print)
 {
 	t_node	*new_node;
-	int	len;
-	
+	int		len;
+
 	len = len_of_list(*head);
 	if (head == NULL || *head == NULL || len <= 1)
 		return ;
@@ -55,10 +55,10 @@ void    rotate_b(t_node **head, int print)
 		write (1, "rb\n", 3);
 }
 
-void    rotate_r_b(t_node **head, int print)
+void	rotate_r_b(t_node **head, int print)
 {
 	t_node	*new_node;
-	int	len;
+	int		len;
 
 	len = len_of_list(*head);
 	if (head == NULL || *head == NULL || len <= 1)
@@ -73,7 +73,7 @@ void    rotate_r_b(t_node **head, int print)
 		write(1, "rrb\n", 4);
 }
 
-void    swap_b(t_node **head, int print)
+void	swap_b(t_node **head, int print)
 {
 	int	len;
 

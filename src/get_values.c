@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_values.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/16 15:58:49 by rgiambon          #+#    #+#             */
+/*   Updated: 2024/09/16 16:18:33 by rgiambon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	get_cheapest(t_node *head)
 {
 	t_node	*current_node;
 	t_node	*cheapest_node;
-	int	cheapest_value;
+	int		cheapest_value;
 
 	if (head == NULL)
 		return ;
@@ -25,58 +37,35 @@ void	get_cheapest(t_node *head)
 
 void	get_price(t_node *head_a, t_node *head_b)
 {
-	t_node	*current_node;
-	int	len_a;
-	int	len_b;
+	t_node	*curr;
+	int		len_a;
+	int		len_b;
 
-	current_node = head_b;
+	curr = head_b;
 	len_a = len_of_list(head_a);
 	len_b = len_of_list(head_b);
-	while (current_node != NULL)
+	while (curr != NULL)
 	{
-		current_node->price = current_node->index;
-		if (!(current_node->is_below_middle))
-			current_node->price = len_b - (current_node->index);
-		if (current_node->target_node->is_below_middle)
-			current_node->price += current_node->target_node->index;
+		curr->price = curr->index;
+		if (!(curr->is_below_middle))
+			curr->price = len_b - (curr->index);
+		if (curr->target_node->is_below_middle)
+			curr->price += curr->target_node->index;
 		else
-			current_node->price += len_a - (current_node->target_node->index);
-		if ((current_node->is_below_middle && !current_node->target_node->is_below_middle)
-			|| (current_node->target_node->is_below_middle
-				&& !current_node->is_below_middle))
-			current_node->price += 2;
-		current_node = current_node->next;
+			curr->price += len_a - (curr->target_node->index);
+		if ((curr->is_below_middle && !curr->target_node->is_below_middle)
+			|| (curr->target_node->is_below_middle && !curr->is_below_middle))
+			curr->price += 2;
+		curr = curr->next;
 	}
-}
-
-t_node	*get_smallest(t_node *head)
-{
-	int	smallest;
-	t_node	*smallest_node;
-	t_node	*current_node;
-
-	if (head == NULL)
-		return (NULL);
-	current_node = head;
-	smallest = INT_MAX;
-	while (current_node != NULL)
-	{
-		if (current_node->value < smallest)
-		{
-			smallest = current_node->value;
-			smallest_node = current_node;
-		}
-		current_node = current_node->next;
-	}
-	return (smallest_node);
 }
 
 void	get_place_in_list(t_node *head)
 {
-	int	i;
-	int	middle;
+	int		i;
+	int		middle;
 	t_node	*current_node;
-	int	len;
+	int		len;
 
 	if (!head)
 		return ;
@@ -99,29 +88,29 @@ void	get_place_in_list(t_node *head)
 void	get_target_node(t_node *head_a, t_node *head_b)
 {
 	t_node	*target_node;
-	t_node	*current_a;
-	t_node	*current_b;
-	int	target_value;
+	t_node	*curr_a;
+	t_node	*curr_b;
+	int		target_value;
 
-	current_b = head_b;
-	while (current_b != NULL)
+	curr_b = head_b;
+	while (curr_b != NULL)
 	{
 		target_value = INT_MAX;
-		current_a = head_a;
-		while (current_a != NULL)
+		curr_a = head_a;
+		while (curr_a != NULL)
 		{
-			if (current_a->value > current_b->value && current_a->value < target_value)
+			if (curr_a->value > curr_b->value && curr_a->value < target_value)
 			{
-				target_value = current_a->value;
-				target_node = current_a;
+				target_value = curr_a->value;
+				target_node = curr_a;
 			}
-			current_a = current_a->next;
+			curr_a = curr_a->next;
 		}
 		if (target_value == INT_MAX)
-			current_b->target_node = get_smallest(head_a);
+			curr_b->target_node = get_smallest(head_a);
 		else
-			current_b->target_node = target_node;
-		current_b = current_b->next;
+			curr_b->target_node = target_node;
+		curr_b = curr_b->next;
 	}
 }
 

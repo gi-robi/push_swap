@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:16:21 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/09/04 12:27:47 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:08:27 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	create_tab_two(char **argv, t_data *db)
 {
-	if (!argv[1][0] || argv[1][0] == 32 || (argv[1][0] >= 9 && argv[1][0] <= 13))
+	if (!argv[1][0] || argv[1][0] == 32
+		|| (argv[1][0] >= 9 && argv[1][0] <= 13))
 	{
 		write(2, "Incorrect arguments.\n", 21);
 		exit (1);
@@ -40,11 +41,11 @@ int	main(int argc, char *argv[])
 	{
 		db.tab = &argv[1];
 		db.is_tab_all = 0;
-	}	
+	}
 	error_check(&db, db.tab);
 	initialize_values(&db);
 	if (!(is_sorted(db.head_a)))
 		sorting_stack(&db);
-	free_all(&db);	
+	free_all(&db);
 	return (0);
 }

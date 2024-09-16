@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_all.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/16 16:06:19 by rgiambon          #+#    #+#             */
+/*   Updated: 2024/09/16 16:06:21 by rgiambon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	final_adjustments(t_data *db)
@@ -38,7 +50,7 @@ t_node	*get_cheapest_node(t_node *head)
 {
 	t_node	*current_node;
 
-	current_node= head;
+	current_node = head;
 	while (current_node)
 	{
 		if (current_node->is_cheapest)
@@ -60,7 +72,8 @@ void	make_move(t_node **head_a, t_node **head_b, t_data *db)
 		get_place_in_list(db->head_a);
 		get_place_in_list(db->head_b);
 	}
-	else if (!(cheapest->is_below_middle) && !(cheapest->target_node->is_below_middle))
+	else if (!(cheapest->is_below_middle)
+		&& !(cheapest->target_node->is_below_middle))
 	{
 		while (*head_a != cheapest->target_node && *head_b != cheapest)
 			rotate_r_both(head_a, head_b);
@@ -92,4 +105,4 @@ void	sort_all(t_data *db)
 	}
 	get_place_in_list(db->head_a);
 	final_adjustments(db);
-}	
+}

@@ -6,22 +6,21 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:38:08 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/09/04 11:55:35 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:08:44 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	sort_3(t_node **head, t_data *db)
 {
-	int	max_num;
+	int		max_num;
 	t_node	*max_ptr;
 	t_node	*current_node;
-	
+
 	current_node = *head;
 	max_num = INT_MIN;
-	while (current_node)   //consider putting this in a function find_max
+	while (current_node)
 	{
 		if (current_node->value > max_num)
 		{
