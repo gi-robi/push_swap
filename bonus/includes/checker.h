@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:38:45 by rgiambon          #+#    #+#             */
-/*   Updated: 2024/09/16 16:53:58 by rgiambon         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:04:30 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data
 	int	top_a;
 	int	top_b;
 	int	spelling_error;
+	int	is_tab_all;
 }	t_data;
 
 long long	ft_atoi_ps(const char *str);
@@ -50,7 +51,7 @@ void		fill_line(t_list *list, char *line, int line_len);
 void		remove_last_node(t_list **list);
 int			count_len(t_list **list);
 void		sort_tab(char *move, t_data *db);
-void		check_if_sorted(t_data *db, int is_tab_all, char **tab);
+void		check_if_sorted(t_data *db, char **tab);
 void		sort_loop(t_data *db);
 int			error_check(char *argv[]);
 int			is_double_number(char *argv[]);
