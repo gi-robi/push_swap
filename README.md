@@ -1,8 +1,8 @@
 # 🔄 push_swap - Stack Sorting Algorithm
 
-Hey there! 👋 Welcome to my push_swap project, where I tackled the challenge of sorting numbers using two stacks, a limited set of operations and the most suitable algorithm.
+Hey there! Welcome to my push_swap project, where I tackled the challenge of sorting numbers using two stacks, a limited set of operations and the most suitable algorithm.
 
-## 🎯 What's This Project About?
+## What's This Project About?
 
 Imagine you have a stack of numbers and you need to sort them, but here's the catch:
 - You have two stacks (let's call them stack A and stack B)
@@ -52,7 +52,7 @@ I implemented this project using the Turk algorithm, adapting it to work with li
    - Keep track of middle positions to optimize rotations
    - Mark the most efficient moves as 'cheapest'
 
-## 🤔 The Tricky Parts
+## The Tricky Parts
 
 Developing push_swap presented unique challenges in algorithm design and optimization. Each challenge pushed me (no pun intended) to think creatively about efficient solutions while maintaining code reliability.
 
@@ -94,7 +94,7 @@ make
 ./push_swap 2 1 3 6 5 8 | wc -l
 ```
 
-## 📊 Performance
+## Performance
 
 My implementation achieves these results:
 - 3 numbers: ≤ 3 operations
@@ -104,7 +104,7 @@ My implementation achieves these results:
 
 These results are very good because they're below the thresholds required for the bonus points, demonstrating the efficiency of my implementation.
 
-### 🐛 Error Handling
+### Error Handling
 
 The program handles various error cases:
 - Invalid arguments (non-numbers, out of integer range)
